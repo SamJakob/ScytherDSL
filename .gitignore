@@ -1,0 +1,8 @@
+.metadata
+.launch
+.settings
+bin/
+*.*_gen
+*-gen/**
+**/*-gen/**
+**/*-bin/**

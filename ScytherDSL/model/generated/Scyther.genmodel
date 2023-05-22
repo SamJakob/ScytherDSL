@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="generated with Xtext 2.30.0" modelDirectory="/ScytherDSL/src-gen"
+    modelPluginID="ScytherDSL" forceOverwrite="true" modelName="Scyther" updateClasspath="false"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" complianceLevel="11.0"
+    copyrightFields="false" runtimeVersion="2.29">
+  <genPackages prefix="Scyther" basePackage="com.samjakob" disposableProviderFactory="true"
+      fileExtensions="spdl" ecorePackage="Scyther.ecore#/">
+    <genClasses ecoreClass="Scyther.ecore#//Scyther">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Scyther.ecore#//Scyther/options"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Scyther.ecore#//Scyther/elements"/>
+    </genClasses>
+    <genClasses ecoreClass="Scyther.ecore#//ElementType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Scyther.ecore#//ElementType/terms"/>
+    </genClasses>
+    <genClasses ecoreClass="Scyther.ecore#//Protocol">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Scyther.ecore#//Protocol/protocol"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Scyther.ecore#//Protocol/roles"/>
+    </genClasses>
+    <genClasses ecoreClass="Scyther.ecore#//Roles">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Scyther.ecore#//Roles/roles"/>
+    </genClasses>
+    <genClasses ecoreClass="Scyther.ecore#//RoleDef">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Scyther.ecore#//RoleDef/def"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Scyther.ecore#//RoleDef/term1"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Scyther.ecore#//RoleDef/term2"/>
+    </genClasses>
+    <genClasses ecoreClass="Scyther.ecore#//Role">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Scyther.ecore#//Role/singular"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Scyther.ecore#//Role/role"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Scyther.ecore#//Role/def"/>
+    </genClasses>
+    <genClasses ecoreClass="Scyther.ecore#//RoleRef">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Scyther.ecore#//RoleRef/fullyQualified"/>
+    </genClasses>
+    <genClasses ecoreClass="Scyther.ecore#//Event">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Scyther.ecore#//Event/fullEventType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Scyther.ecore#//Event/from"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Scyther.ecore#//Event/to"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Scyther.ecore#//Event/eventTerms"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Scyther.ecore#//Event/claim"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Scyther.ecore#//Event/claimTerms"/>
+    </genClasses>
+    <genClasses ecoreClass="Scyther.ecore#//MessageEventType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Scyther.ecore#//MessageEventType/eventType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Scyther.ecore#//MessageEventType/label"/>
+    </genClasses>
+    <genClasses ecoreClass="Scyther.ecore#//ClaimEventType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Scyther.ecore#//ClaimEventType/eventType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Scyther.ecore#//ClaimEventType/label"/>
+    </genClasses>
+    <genClasses ecoreClass="Scyther.ecore#//MatchEventType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Scyther.ecore#//MatchEventType/not"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Scyther.ecore#//MatchEventType/eventType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Scyther.ecore#//MatchEventType/label"/>
+    </genClasses>
+    <genClasses ecoreClass="Scyther.ecore#//MatchedLabel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Scyther.ecore#//MatchedLabel/suppressCorresponding"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Scyther.ecore#//MatchedLabel/labelName"/>
+    </genClasses>
+    <genClasses ecoreClass="Scyther.ecore#//UnmatchedLabel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Scyther.ecore#//UnmatchedLabel/labelName"/>
+    </genClasses>
+    <genClasses ecoreClass="Scyther.ecore#//GlobalDeclaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Scyther.ecore#//GlobalDeclaration/declType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Scyther.ecore#//GlobalDeclaration/roleRef"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Scyther.ecore#//GlobalDeclaration/macroName"/>
+    </genClasses>
+    <genClasses ecoreClass="Scyther.ecore#//Declaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Scyther.ecore#//Declaration/secret"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Scyther.ecore#//Declaration/type"/>
+    </genClasses>
+    <genClasses ecoreClass="Scyther.ecore#//Key">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Scyther.ecore#//Key/key"/>
+    </genClasses>
+    <genClasses ecoreClass="Scyther.ecore#//Type">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Scyther.ecore#//Type/type"/>
+    </genClasses>
+    <genClasses ecoreClass="Scyther.ecore#//Term">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Scyther.ecore#//Term/term"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Scyther.ecore#//Term/terms"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Scyther.ecore#//Term/key"/>
+    </genClasses>
+    <genClasses ecoreClass="Scyther.ecore#//TypeList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Scyther.ecore#//TypeList/types"/>
+    </genClasses>
+    <genClasses ecoreClass="Scyther.ecore#//TermList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Scyther.ecore#//TermList/terms"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

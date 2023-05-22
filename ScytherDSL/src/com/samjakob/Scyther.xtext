@@ -1,0 +1,102 @@
+grammar com.samjakob.Scyther with org.eclipse.xtext.common.Terminals
+
+generate scyther "https://samjakob.com/scyther/Scyther"
+
+Scyther:
+	(options+=OptionDirective)*
+	(elements+=ElementType)*;
+
+OptionDirective:
+	'option' '"' -> '"' ';';
+
+ElementType:
+	GlobalDeclaration | Protocol;
+	
+Protocol:
+	'protocol' protocol=ID '(' terms=TermList ')' '{' (roles+=Roles)* '}' ';'?;
+
+/* Roles */
+
+Roles: roles+=Role (',' roles+=Role)*
+	| Declaration (',' roles+=Role)*;
+
+RoleDef:
+	Event (def=RoleDef)?
+	| Declaration def=RoleDef
+	;
+
+Role: (singular?='singular')? 'role' role=ID '{' def=RoleDef '}' ';'?;
+RoleRef hidden(): fullyQualified+=Role ('.' fullyQualified+=Role)*;
+
+/* Events */
+
+Event:
+	// Deal with 'send' and 'recv' events.
+	// There is also a 'read' event but it's deprecated and intended to be replaced by 'recv'.
+	fullEventType=MessageEventType '(' from=From ',' to=To (',' eventTerms?=(TermList))? ')' ';'
+	// Claim is almost identical to the above, but has an optional label.
+	| fullEventType=ClaimEventType '(' from=From ',' claim=Claim (',' claimTerms?=TermList)? ')' ';'
+	// Specify new pattern matching events as specified in parser. Match does not have an option for a label.
+	| fullEventType=MatchEventType '(' term1=Term ',' term2=Term ')' ';'
+	;
+
+MessageEventType hidden(): eventType=('recv'|'send'|'read') label=MatchedLabel;
+ClaimEventType hidden(): eventType='claim' (label?=UnmatchedLabel)?;
+MatchEventType hidden(): (not?='not')? eventType='match' (label?=UnmatchedLabel)?;
+
+From: ID;
+To: ID;
+Claim: ID;
+
+/** Represents a label that Scyther will check for matches with. The checking can be suppressed. */
+MatchedLabel hidden(): '_' (suppressCorresponding?='!')? labelName=ID;
+
+/** Represents a label that Scyther will not check for matches with. */
+UnmatchedLabel hidden(): '_' labelName=ID;
+
+/* Declarations */
+
+GlobalDeclaration: Declaration
+	| declType='untrusted' terms=TermList ';'
+	| declType='usertype' terms=TermList ';'
+	| declType='run' roleRef=RoleRef '(' terms=TermList ')' ';'
+	| declType='macro' macroName=ID '=' terms=TermList ';';
+
+Declaration: (secret?='secret')? 'const' terms=TermList (':' type=Type)? ';'
+	| (secret?='secret')? 'var' terms=TermList (':' type=TypeList)? ';'
+	| 'fresh' terms=TermList (':' type=Type)? ';' // altered based on parser.y (no secret option for fresh, type info 1 not type info N)
+	| 'secret' terms=TermList (':' type=Type)? ';' // altered based on parser.y (: before type)
+	| 'inversekeys' '(' term1=Term ',' term2=Term ')' ';'
+	| 'compromised' terms=TermList ';'
+	| 'hashfunction' terms=TermList ';' // added from on parser.y
+	;
+
+/* Types and Terms */
+
+Key: key=Term;
+Type: type=ID;
+Term: term=ID
+	| '{' terms=TermList '}' key=Key
+	| '(' terms=TermList ')'
+	| term=ID '(' terms=TermList ')'
+	;
+
+TypeList: types+=Type (',' types+=Type)*;
+TermList: terms+=Term (=> ',' terms+=Term)*;
+
+/** Overridden Terminals */
+
+/**
+ * An ordinary ID for a Scyther object.
+ * Optionally, starts with an 'at' symbol (@).
+ * Then, permits one or more letters, digits, or carets, dashes exclamation points,
+ * or single quotes.
+ */
+@Override 
+terminal ID: '@'?('a'..'z'|'A'..'Z'|INT|'^'|'-'|"'")+;
+
+/** Single-line comment. (Either double slash or pound sign (#)). */
+@Override
+terminal SL_COMMENT : ('//'|'#') !('\n'|'\r')* ('\r'? '\n')?;
+
+ 
