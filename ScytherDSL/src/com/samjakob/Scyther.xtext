@@ -7,7 +7,7 @@ Scyther:
 	(elements+=ElementType)*;
 
 OptionDirective:
-	'option' '"' -> '"' ';';
+	'option' STRING ';';
 
 ElementType:
 	GlobalDeclaration | Protocol;
@@ -18,7 +18,8 @@ Protocol:
 /* Roles */
 
 Roles: roles+=Role (',' roles+=Role)*
-	| Declaration (',' roles+=Role)*;
+	| Declaration (',' roles+=Role)*
+	;
 
 RoleDef:
 	Event (def=RoleDef)?
