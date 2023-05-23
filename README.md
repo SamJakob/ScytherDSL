@@ -17,9 +17,17 @@ to install the Xtext SDK add-on (the full SDK) into Eclipse to be able to work w
 and you can visit [https://www.eclipse.org/Xtext](https://www.eclipse.org/Xtext) to find out
 more about Xtext, including instructions and usage guides.
 
-The main grammar can be found in [ScytherDSL/src/com/samjakob/Scyther.xtext](ScytherDSL/src/com/samjakob/Scyther.xtext).
-The `validation/` sub-package contains code to run diagnostics (i.e., perform validation
+- The main grammar can be found in [ScytherDSL/src/com/samjakob/Scyther.xtext](ScytherDSL/src/com/samjakob/Scyther.xtext)
+which uses [Eclipse Xtext's Terminals](https://raw.githubusercontent.com/eclipse/xtext/main/org.eclipse.xtext/src/org/eclipse/xtext/common/Terminals.xtext) (as is the default).
+- The `validation/` sub-package contains code to run diagnostics (i.e., perform validation
 of entered code).
+- Eclipse-specific highlighting (which is to be ported to the TextMate grammar) can be
+found in [ScytherDSL.ui/src/com/samjakob/ui/highlighting/ScytherHighlightingConfiguration.java](ScytherDSL.ui/src/com/samjakob/ui/highlighting/ScytherHighlightingConfiguration.java)
+(i.e., in the UI package). _This is used to specify the exact coloring and styling to be used
+in the editor, which in an LSP-implementation is done client-side with a TextMate grammar._
+- The platform-independent semantic highlighting (i.e., the portion of the language server that
+detects the tokens that need to be colored, and tags them) can be found in the IDE package.
+[ScytherDSL.ide/src/com/samjakob/ide/highlighting](ScytherDSL.ide/src/com/samjakob/ide/highlighting).
 
 ## Feature To-Do List
 
