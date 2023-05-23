@@ -21,7 +21,7 @@ The main grammar can be found in [ScytherDSL/src/com/samjakob/Scyther.xtext](Scy
 The `validation/` sub-package contains code to run diagnostics (i.e., perform validation
 of entered code).
 
-## To-Do List
+## Feature To-Do List
 
 This is a fairly ambitious to-do list. It is unlikely that all of these features will be met,
 and instead, versions will be released as and when a version is considered suitable for general
@@ -29,16 +29,25 @@ use.
 
 - [x] Port grammar to Xtext.
 - [x] Test warnings (validation) and quick fixes.
-- [ ] Semantic Highlighting
+- ⌛ Semantic and Syntax Highlighting (In progress)
+- [ ] Document Outline
 - [ ] Information on hover
+- [ ] Scoping (and? suggestion information on type)
 - [ ] Document Link
-- [ ] Rename
-- [ ] Snippets (Template Proposals)
+- [ ] Rename Command
+- [ ] Snippet Commands (Template Proposals)
 - [ ] Formatting
+
+## Release To-Do List
+
+- [ ] Export LSP implementation.
+- [ ] Write TextMate grammar to accompany LSP implementation
+    - (Adds syntax highlighting into non-Eclipse editors).
+- [ ] Write wrapper plugins for VS Code (and IntelliJ Platform)
 
 ## Credits
 
-All credit for Scyther and it's language goes to [Cas Cremers](https://github.com/cascremers)
+All credit for Scyther and its language goes to [Cas Cremers](https://github.com/cascremers)
 and the other project authors.
 
 Please note that this extension is developed under my own set of reverse-domain packages to
